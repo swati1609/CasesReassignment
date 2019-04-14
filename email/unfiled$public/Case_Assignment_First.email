@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Your case has been reassigned" recipientType="Contact" relatedToType="Case">
+<messaging:plainTextEmailBody >
+Hello {relatedTo.Account.FirstName} your case will be handled by {!relatedTo.owner.Name}.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

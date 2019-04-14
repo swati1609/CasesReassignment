@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>CaseReassignedNotifyToCustomer</members>
+        <members>CaseReassignedNotifyToCustomerTest</members>
+        <members>QueuesDisplay</members>
+        <members>QueuesDisplayTest</members>
+        <members>ScheduleCaseReassignedNotifyToCustomer</members>
+        <members>ScheduleCaseReassignedTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>CaseOwnerToDepartment</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>Case.ReassignedDate__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>unfiled$public/Case_Assignment_First</members>
+        <name>EmailTemplate</name>
+    </types>
+    <version>36.0</version>
+</Package>

@@ -1,0 +1,50 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" 
+                access="global" 
+                controller="QueuesDisplay">
+    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="showDetailView" type="Boolean" default="true" />
+    <aura:attribute name="showEditView" type="Boolean" default="false" />
+    <aura:attribute name="disableSaveButton" type="Boolean" default="true" />
+    <aura:attribute name="AllQueuesOptions" type="List"/>
+    <aura:attribute name="selectedQueueId" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.ReassignAction}" />
+    
+    <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Case">
+        <lightning:card title="Case Ownership Details" iconName="action:new_group">
+            <p class="slds-p-horizontal_small">
+                <div class="slds-grid">
+                    <aura:if isTrue="{!v.showDetailView == true}">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning:outputField fieldName="OwnerId"/>
+                            <lightning:outputField fieldName="ReassignedDate__c" />
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <ui:button label="Reassign To" press="{!c.toggle}"/>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!v.showEditView == true}">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning:radioGroup name="selectQueue"  
+                                                  label="Select Queue"   
+                                                  options="{!v.AllQueuesOptions}"  
+                                                  value="{!v.selectedQueueId}"  
+                                                  type="radio"  
+                                                  required="true"
+                                                  onchange="{!c.onRadio}"/>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning:button label="Save" 
+                                              variant="brand" 
+                                              onclick="{!c.SaveradioResult}"
+                                              disabled="{!v.disableSaveButton}"/>
+                            <lightning:button label="Cancel" 
+                                              variant="Neutral" 
+                                              onclick="{!c.toggle2}"/>
+                        </div>
+                    </aura:if>
+                </div>
+            </p>
+        </lightning:card>
+    </lightning:recordViewForm>
+</aura:component>
